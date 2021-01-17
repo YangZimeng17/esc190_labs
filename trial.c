@@ -6,6 +6,6 @@ int main(){
     // new change: added 1 comment.
 
     printf("trytry");
-    printf("test x2");
+    printf("test");
     return 0;
 }
