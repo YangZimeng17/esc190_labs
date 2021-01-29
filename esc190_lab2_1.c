@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
 
 struct node{
     int data;
@@ -7,19 +9,19 @@ struct node{
 
 struct node *start = NULL;
 struct node *create(struct node *start);
-struct node *print_linked(struct node *start);
-struct node *print_linked_recur(struct node *curr);
+void print_linked(struct node *start);
+void print_linked_recur(struct node *curr);
 
 
 int main(){
     start = create(start);
-    //start = print_linked(start);
-    start = print_linked_recur(start);
+    print_linked(start);
+    print_linked_recur(start);
     
     return 0;
 }
 
-struct node *print_linked(struct node *start)
+void print_linked(struct node *start)
 {
     struct node *ptr;
     ptr = start;
@@ -31,7 +33,7 @@ struct node *print_linked(struct node *start)
     }
 }
 
-struct node *print_linked_recur(struct node *curr)
+void print_linked_recur(struct node *curr)
 {
     if (curr != NULL){
         printf("current = %d, value = %d, next = %d\n", curr, curr->data, curr->next);
