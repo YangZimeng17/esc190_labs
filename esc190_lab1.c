@@ -20,9 +20,10 @@ void insertion_sort(int arr[], int length){
     }
 }
 
-void print_array(int arr[]){
+void print_array(int arr[], int size){
     int i = 0;
-    while(i < 6){
+    
+    while(i < size){
        printf("%d\n", arr[i]);
        i++;
    }
@@ -37,11 +38,11 @@ int main(){
 
     //problem 2
 
-    int arr[] = {12,2,31,11,5,9};
+    int arr[7] = {12,2,31,11,5,9,24};
     //int a[5] = {5, 3, 7, 5, 1};
     int size = sizeof arr / sizeof arr[0];
     insertion_sort(arr, size);
 
-    print_array(arr);
+    print_array(arr, size);
     return 0;
 }
