@@ -88,6 +88,7 @@ int main(void)
     append_float(node0, 1, 40.0);
     append_double(node0, 2, 50.0);
 
+    append_float(node0, 1, 3.1415);
    /*
     struct node *node1 = (struct node *)malloc(sizeof(struct node));
     node0->next = node1;
@@ -96,6 +97,6 @@ int main(void)
     */
 
     print(node0);
-    printf("hi, all\n");
+    //printf("hi, all\n");
     return 0;
 }
