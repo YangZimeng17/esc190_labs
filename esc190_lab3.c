@@ -1,14 +1,21 @@
 #include <stdio.h>
+#include <ctype.h>
+
 
 char *my_strcat(char *dest, char *src);
 int my_strcmp_rec(char *dest, char *src);
+int atoi(char *str);
+
 
 int main(void)
 {
-    char one[50] = "This is ";
-    char two[] = "my house.";
-    my_strcat(one, two);
-    printf("%s\n", one);
+    //char one[50] = "This is ";
+    //char two[] = "my house.";
+    //my_strcat(one, two);
+    //printf("%s\n", one);
+
+    int i = atoi("1234");
+    printf("%d\n", i);
 
     return 0;
 }
@@ -34,4 +41,23 @@ char *my_strcat(char *dest, char *src){
 int my_strcmp_rec(char *dest, char *src){
 
     
+}
+
+
+int atoi(char *str){
+    // does not work yet
+    char *ptr = str;
+    int res = 0;
+    int count = 1;
+    while (*ptr != '\0'){
+        printf("%s\n", *ptr);
+        if (isdigit(*ptr)){
+            res = (*ptr-'0')*count + res;
+            count = count*10;
+        }
+        ptr++;
+    }
+    
+    return res;
+  
 }
