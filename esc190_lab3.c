@@ -18,13 +18,14 @@ int main(void)
     int i = atoi("1234");
     printf("%d\n", i);
 
+    /*
     //Q2
     char *one = "This is c";
     char *two = "This is a";
     int answer;
     answer = my_strcmp_rec(one, two);
     printf("%d\n", answer);
-
+    */
     return 0;
 }
 
@@ -45,7 +46,7 @@ char *my_strcat(char *dest, char *src){
     return dest;
 }
 
-
+/*
 int my_strcmp_rec(char *dest, char *src){
 
     if (*dest == *src)
@@ -68,6 +69,7 @@ int my_strcmp_rec(char *dest, char *src){
     }    
 
 }
+*/
 
 
 int atoi(char *str){
@@ -91,29 +93,4 @@ int atoi(char *str){
         str++;
     }
     return(res * multiplier);
-}
-  
-//Q4
-struct node{
-    int data;
-    struct node *next;
-};
-
-int floyd(struct node *head){
-    struct node* slow_p = head;
-    struct node* fast_p = head;
-
-    while (fast_p->next != NULL){
-        cur_fastp = fast_p -> next;
-        cur_fastp = fast_p -> next;
-
-        cur_slowp = slow_p -> next;
-
-        if (slow_p == fast_p){
-            return 1
-        }
-    }
-
-    return 0
-
 }
