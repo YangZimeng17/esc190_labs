@@ -3,7 +3,8 @@
 
 
 char *my_strcat(char *dest, char *src);
-int my_strcmp_rec(char *dest, char *src);
+//int my_strcmp_rec(char *dest, char *src);
+int my_strcmp_rec(char *, char *);
 int atoi(char *str);
 
 
@@ -16,6 +17,13 @@ int main(void)
 
     int i = atoi("1234");
     printf("%d\n", i);
+
+    //Q2
+    char *one = "This is c";
+    char *two = "This is a";
+    int answer;
+    answer = my_strcmp_rec(one, two);
+    printf("%d\n", answer);
 
     return 0;
 }
@@ -40,11 +48,27 @@ char *my_strcat(char *dest, char *src){
 
 int my_strcmp_rec(char *dest, char *src){
 
+<<<<<<< HEAD
     if (*dest == *src)
     {
         return 0;
     }
     
+=======
+    if (*dest != *src)
+    {
+        return (*dest - *src);
+    }
+    else if (*dest =='\0')
+    {
+        return 0;
+    } 
+    else
+    {
+        return my_strcmp_rec(++dest, ++src);
+    }    
+
+>>>>>>> 7c19ff9c1766bf3bc17dc42e6044c35303849ff5
 }
 
 
