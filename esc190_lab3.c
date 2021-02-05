@@ -48,13 +48,12 @@ char *my_strcat(char *dest, char *src){
 
 int my_strcmp_rec(char *dest, char *src){
 
-<<<<<<< HEAD
     if (*dest == *src)
     {
         return 0;
     }
     
-=======
+
     if (*dest != *src)
     {
         return (*dest - *src);
@@ -68,7 +67,6 @@ int my_strcmp_rec(char *dest, char *src){
         return my_strcmp_rec(++dest, ++src);
     }    
 
->>>>>>> 7c19ff9c1766bf3bc17dc42e6044c35303849ff5
 }
 
 
