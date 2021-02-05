@@ -66,12 +66,12 @@ int main(void)
 {
 
     char *one = "This is c";
-        /*
+        
     char *two = "This is a";
     int answer;
     answer = my_strcmp_rec(one, two);
     printf("%d\n", answer);
-    */
+    
 
     printf("%s", slicing(one, 9));
     return 0;
