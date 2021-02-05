@@ -31,7 +31,7 @@ int main(void)
     //empty linked list
     //struct node *node0 = NULL;
 
-    ///*
+  /*
     //looped linked list
     struct node *node0 = (struct node *)malloc(sizeof(struct node));
     node0->value = 0;
@@ -56,19 +56,29 @@ int main(void)
     node5->value = 5;
     node4->next = node5;
     node5->next = node2;
-    //*/
+*/
 
-    /*
+/*
     //unlooped list w 2 nodes
     struct node *node0 = (struct node *)malloc(sizeof(struct node));
     node0->value = 0;
-    
+
     struct node *node1 = (struct node *)malloc(sizeof(struct node));
     node1->value = 1;
     node0->next = node1;
-   
+
     node0->next = NULL;
-    */
+
+    //unlooped list w 1 node
+    struct node *node0 = (struct node *)malloc(sizeof(struct node));
+    node0->value = 0;
+    node0->next = NULL;
+
+    //looped list pointing to itself
+    struct node *node0 = (struct node *)malloc(sizeof(struct node));
+    node0->value = 0;
+    node0->next = node0;
+*/
 
     if (has_cycle(node0))
         printf("Yes, it has cycle!\n");
