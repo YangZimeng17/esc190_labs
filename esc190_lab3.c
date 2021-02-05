@@ -71,7 +71,6 @@ int my_strcmp_rec(char *dest, char *src){
 
 
 int atoi(char *str){
-    // does not work yet
     int res=0;
     int multiplier = 1;
     
@@ -94,4 +93,27 @@ int atoi(char *str){
     return(res * multiplier);
 }
   
+//Q4
+struct node{
+    int data;
+    struct node *next;
+};
 
+int floyd(struct node *head){
+    struct node* slow_p = head;
+    struct node* fast_p = head;
+
+    while (fast_p->next != NULL){
+        cur_fastp = fast_p -> next;
+        cur_fastp = fast_p -> next;
+
+        cur_slowp = slow_p -> next;
+
+        if (slow_p == fast_p){
+            return 1
+        }
+    }
+
+    return 0
+
+}
