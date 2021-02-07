@@ -18,7 +18,12 @@
    str2 in a lexicographic order.
 */
 
-
+/*
+General idea: one statement checking if str1[0] != str2[0]; one statement
+check if both of them are NULL; recursive fcn taking input str that dont 
+have the first elem (using str + 1 to get that).
+elem
+*/
 char *slicing(char *str, int len){
     /*
     int len = 0;
@@ -34,7 +39,7 @@ char *slicing(char *str, int len){
         res[i] = str[i];
     }
 
-    return res;
+    return (*)res;
 }
 
 

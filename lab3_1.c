@@ -9,6 +9,16 @@ int main(void)
 {
     char one[50] = "This is ";
     char two[] = "my house.";
+
+    /*
+    char one[50] = "";
+    char two[] = "my house.";
+    */
+
+    /*
+    char one[50] = "This is ";
+    char two[] = "";
+    */
     my_strcat(one, two);
     printf("%s\n", one);
 
