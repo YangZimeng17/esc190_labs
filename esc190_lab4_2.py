@@ -5,6 +5,7 @@ write a function find(L, e) that takes in a sorted list L and an element e, and 
     the function should run in O(log(n)) time
 """
 def bisect_search_helper(L, e, low, high):
+    
     if high==low:
         if L[high]==e:
             return high
@@ -49,8 +50,9 @@ def find_highest(L, e):
         
     return index
 
-L1 = ['a', 'e', 'i', 'o', 'i', 'u']
-print(find_lowest(L1, "e"))
+# list need to be sorted
+L1 = ['a', 'e', 'i', 'o', 'u']
+print(find_lowest(L1, "o"))
 print(find_lowest(L1, "h"))
 
 L2 = []
