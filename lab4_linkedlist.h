@@ -11,9 +11,9 @@ int append(struct node * head, int value);
 
 struct node *insert(struct node *head, int index, int value);
 
-int insert_node(struct node **head, int index, int value);
+//int insert_node(struct node **head, int index, int value);
 
-int delete_node(struct node ** head, struct node * anode);
+//int delete_node(struct node ** head, struct node * anode);
 
 int delete_node_byvalue(struct node ** head, int value);
 
