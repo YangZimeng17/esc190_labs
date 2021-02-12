@@ -25,4 +25,6 @@ int main(void)
     delete_node_byvalue(&head, 1);
     printf("In main end, new head addr: %ld\n", head);
     print_linked_list(head);
+
+    getchar();
 }
