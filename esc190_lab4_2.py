@@ -1,11 +1,12 @@
 """
-write a function find(L, e) that takes in a sorted list L and an element e, and returns the lowest index in L such that L[i] == e. (-1 if there is no such index)
-   Write a function that takes in a sorted list L and an element e, and returns the index of the highest index in L such that L[i] == e. (-1 if there is no such index).
+write a function find(L, e) that takes in a sorted list L and an element e, 
+and returns the lowest index in L such that L[i] == e. (-1 if there is no such index)
+   Write a function that takes in a sorted list L and an element e, and returns 
+   the index of the highest index in L such that L[i] == e. (-1 if there is no such index).
 
     the function should run in O(log(n)) time
 """
 def bisect_search_helper(L, e, low, high):
-    
     if high==low:
         if L[high]==e:
             return high
@@ -29,10 +30,19 @@ def find_lowest(L, e):
     else:        
         index = bisect_search_helper(L, e, 0, len(L)-1)
         #lines below to make sure to find the lowest when having duplicates
-        tmp = index-1
-        while (L[tmp]==e):
+
+        while True:
+            tmp = index-1
+            if L[tmp] != e:
+                break
+            index = bisect_search_helper(L, e, 0, index)
+
+                '''
+        while (L[tmp]==e): #cases like L = ['a', 'b', 'a', 'o', 'u'] wouldn't cause problem by unable to check the first elem bc we code under the assumption that it's a sorted list, so same elem has to be beside each other
+# worst case is when your elem is at the end
             index=tmp
             tmp-=1
+        '''
     return index
 
 
