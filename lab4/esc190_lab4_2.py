@@ -62,6 +62,10 @@ print(find_lowest(L2, ""))
 print(find_highest(L1, "e"))
 print(find_highest(L1, "h"))
 
+L3 = ['a', 'e', 'e', 'e', 'i']
+print(find_lowest(L3, 'e'))
+print(find_highest(L3, 'e'))
+
 """
 # don't have a runtime complexity of log n
 def find_lowest(L, e):
