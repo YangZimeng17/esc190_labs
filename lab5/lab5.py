@@ -8,7 +8,8 @@ class Node:
 
 
 def connect(node1, node2, weight):
-    node1.connections.append({"node": node2, "weight": weight})
+    node1.connections.append({"node": node2, "weight": weight}) #gives a list of dictionaries
+    #print(node1.connections)
     node2.connections.append({"node": node1, "weight": weight})
 
 
@@ -20,23 +21,47 @@ def BFS(node):
         print(cur.name)
         for con in cur.connections:
             if not con["node"].visited:
-                q.append(con["node"])
+                q.append(con["node"]) #add this node to queue q
                 con["node"].visited = True
-
 
 ################################################################################
 
 def get_all_nodes(node):
     '''Return a list of the nodes in the graph of nodes connected to node
-    (N.B., the nodes can be indirectly connected as well)'''
+    (N.B., the nodes can be indirectly connected as well, like the one that connects with 
+    the node of the node, the node of the node of the node etc.)'''
+    q = []
+    #to_visit = []
+
+    while (node.connections != []):  
+        for con in node.connections:
+            if con not in q:
+                q.append(con)
+            node.visited = True
+            #to_visit.append(con)
+            if not con["node"].visited:
+                if con not in q:
+                    q.append(con["node"]) #add this node to queue q
+                con["node"].visited = True
+        node = node.connections[0]
+        node.visited = True
+
+
+    print(q)
 
 ################################################################################
 
 def unvisit_all(node):
     '''Change all n.visited to False in all the nodes in the graph of nodes
     connected to node. Use BFS to find all the nodes'''
-
-
+    q = [node]
+    node.visited = False
+    while len(q) > 0:
+        cur = q.pop(0) # remove q[0] from q and put it in cur
+        #print(cur.name)
+        for con in cur.connections:
+            q.append(con["node"]) #add this node to queue q
+            con["node"].visited = False
 
 ###############################################################################
 
@@ -59,7 +84,7 @@ def DFS_nonrec(node):
 # OPTIONAL
 #
 
-def dijsktra_slowish(node)
+def dijsktra_slowish(node):
     '''Implement Dijkstra's algorithm as discussed in class (i.e., you don't
     need to use a priority queue'''
     S = [node]
@@ -73,7 +98,6 @@ def dijsktra_slowish(node)
         pass
 
     return d
-
 
 
 
