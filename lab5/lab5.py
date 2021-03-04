@@ -31,23 +31,20 @@ def get_all_nodes(node):
     (N.B., the nodes can be indirectly connected as well, like the one that connects with 
     the node of the node, the node of the node of the node etc.)'''
     q = []
-    #to_visit = []
-
-    while (node.connections != []):  
-        for con in node.connections:
-            if con not in q:
-                q.append(con)
-            node.visited = True
-            #to_visit.append(con)
+    visit_ed = [node]
+    node.visited = True
+    while len(visit_ed) > 0:
+        cur = visit_ed.pop(0) # remove q[0] from q and put it in cur
+        #q.append(cur.name)
+        #q.append(cur.name["node"])
+        q.append(cur)
+        visit_ed.append(cur)
+        for con in cur.connections:
             if not con["node"].visited:
-                if con not in q:
-                    q.append(con["node"]) #add this node to queue q
+                visit_ed.append(con["node"]) #add this node to queue q
                 con["node"].visited = True
-        node = node.connections[0]
-        node.visited = True
-
-
-    print(q)
+    
+    return q
 
 ################################################################################
 
