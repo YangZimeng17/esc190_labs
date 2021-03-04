@@ -1,4 +1,4 @@
-import numpy as np
+#import numpy as np
 
 class Node:
     def __init__(self, name):
@@ -27,9 +27,11 @@ def BFS(node):
 ################################################################################
 
 def get_all_nodes(node):
-    '''Return a list of the nodes in the graph of nodes connected to node
+    '''Return a list of the nodes in the graph of nodes connected to node (the node itself is
+    thought as connected to itself)
     (N.B., the nodes can be indirectly connected as well, like the one that connects with 
     the node of the node, the node of the node of the node etc.)'''
+    '''
     q = []
     visit_ed = [node]
     node.visited = True
@@ -43,29 +45,45 @@ def get_all_nodes(node):
             if not con["node"].visited:
                 visit_ed.append(con["node"]) #add this node to queue q
                 con["node"].visited = True
+    '''
+    res = []
+    q = [node]
+    node.visited = True
+    while len(q) > 0:
+        cur = q.pop(0) # remove q[0] from q and put it in cur
+        res.append(cur)
+        for con in cur.connections:
+            if not con["node"].visited:
+                q.append(con["node"]) #add this node to queue q
+                con["node"].visited = True
     
-    return q
+    return res
 
 ################################################################################
 
 def unvisit_all(node):
     '''Change all n.visited to False in all the nodes in the graph of nodes
-    connected to node. Use BFS to find all the nodes'''
+    connected to node. Use BFS to find all the nodes
+    We need this since node.visited doesn't get reset after we changed them
+    w/i a function (since when we are changing node, we are sending it to the 
+    fcn, instead of creating a local node)'''
     q = [node]
     node.visited = False
     while len(q) > 0:
         cur = q.pop(0) # remove q[0] from q and put it in cur
-        #print(cur.name)
         for con in cur.connections:
-            q.append(con["node"]) #add this node to queue q
-            con["node"].visited = False
-
+            if con["node"].visited:
+                q.append(con["node"]) #add this node to queue q
+                con["node"].visited = False
+                
 ###############################################################################
 
 def DFS_rec(node):
     '''Print out the names of all nodes connected to node using a
     recursive version of DFS'''
-
+    print(node.name)
+    for i in node.connections:
+        DFS_rec(i)
 
 ################################################################################
 
@@ -73,7 +91,7 @@ def DFS_nonrec(node):
     '''Print out the names of all nodes connected to node using a non-recursive
     version of DFS. Make it so that the nodes are printed in the same order
     as in DFS_rec'''
-
+    while ()
 
 
 ################################################################################
@@ -111,9 +129,22 @@ if __name__ == '__main__':
     connect(NYC, DC, 2)
     connect(SF, DC, 5)
 
+    '''
     L = get_all_nodes(TO)
-    DFS(TO)
-    #DFS_rec(TO)
+    for i in L:
+        print(i.name)
+    '''
+    unvisit_all(TO)
+
+    '''
+    for i in TO.visited:
+        print(i)
+    '''
+    
+    #DFS(TO)
+    DFS_rec(TO)
+    '''
     unvisit_all(TO)
     DFS(TO)
     print(dijsktra_slowish(TO))
+    '''
