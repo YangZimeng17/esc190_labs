@@ -31,7 +31,6 @@ def get_all_nodes(node):
     thought as connected to itself)
     (N.B., the nodes can be indirectly connected as well, like the one that connects with 
     the node of the node, the node of the node of the node etc.)'''
-<<<<<<< HEAD
     q = [node]
     res = []
     node.visited = True
@@ -43,34 +42,6 @@ def get_all_nodes(node):
                 q.append(con["node"]) #add this node to queue q
                 con["node"].visited = True
 
-=======
-    '''
-    q = []
-    visit_ed = [node]
-    node.visited = True
-    while len(visit_ed) > 0:
-        cur = visit_ed.pop(0) # remove q[0] from q and put it in cur
-        #q.append(cur.name)
-        #q.append(cur.name["node"])
-        q.append(cur)
-        visit_ed.append(cur)
-        for con in cur.connections:
-            if not con["node"].visited:
-                visit_ed.append(con["node"]) #add this node to queue q
-                con["node"].visited = True
-    '''
-    res = []
-    q = [node]
-    node.visited = True
-    while len(q) > 0:
-        cur = q.pop(0) # remove q[0] from q and put it in cur
-        res.append(cur)
-        for con in cur.connections:
-            if not con["node"].visited:
-                q.append(con["node"]) #add this node to queue q
-                con["node"].visited = True
-    
->>>>>>> 6d8dd6c41a58bfd31f7be39e7c671c6bad68719b
     return res
 
 ################################################################################
@@ -84,7 +55,6 @@ def unvisit_all(node):
     q = [node]
     node.visited = False
     while len(q) > 0:
-<<<<<<< HEAD
         cur = q.pop() # remove q[0] from q and put it in cur
         #print(cur.name)
         for con in cur.connections:
@@ -92,31 +62,16 @@ def unvisit_all(node):
                 q.append(con["node"]) #add this node to queue q
                 con["node"].visited = False
 
-=======
-        cur = q.pop(0) # remove q[0] from q and put it in cur
-        for con in cur.connections:
-            if con["node"].visited:
-                q.append(con["node"]) #add this node to queue q
-                con["node"].visited = False
-                
->>>>>>> 6d8dd6c41a58bfd31f7be39e7c671c6bad68719b
 ###############################################################################
 
 def DFS_rec(node):
     '''Print out the names of all nodes connected to node using a
     recursive version of DFS'''
-<<<<<<< HEAD
     node.visited = True
     print(node.name)
     for e in node.connections:
         if e['node'].visited == False:
             DFS_rec(e['node'])
-    
-=======
-    print(node.name)
-    for i in node.connections:
-        DFS_rec(i)
->>>>>>> 6d8dd6c41a58bfd31f7be39e7c671c6bad68719b
 
 ################################################################################
 
@@ -124,7 +79,6 @@ def DFS_nonrec(node):
     '''Print out the names of all nodes connected to node using a non-recursive
     version of DFS. Make it so that the nodes are printed in the same order
     as in DFS_rec'''
-<<<<<<< HEAD
     q = [node]
     while len(q) > 0:
         cur = q.pop()
@@ -136,11 +90,6 @@ def DFS_nonrec(node):
                 q.append(cur)
                 q.append(e['node'])
                 break
-
-=======
-    while ()
->>>>>>> 6d8dd6c41a58bfd31f7be39e7c671c6bad68719b
-
 
 ################################################################################
 #
@@ -177,7 +126,6 @@ if __name__ == '__main__':
     connect(NYC, DC, 2)
     connect(SF, DC, 5)
 
-<<<<<<< HEAD
     #L = get_all_nodes(TO)
     #BFS(TO)
     #DFS_rec(TO)
@@ -185,24 +133,4 @@ if __name__ == '__main__':
     unvisit_all(TO)
     #DFS(TO)
     #print(dijsktra_slowish(TO))
-=======
-    '''
-    L = get_all_nodes(TO)
-    for i in L:
-        print(i.name)
-    '''
-    unvisit_all(TO)
 
-    '''
-    for i in TO.visited:
-        print(i)
-    '''
-    
-    #DFS(TO)
-    DFS_rec(TO)
-    '''
-    unvisit_all(TO)
-    DFS(TO)
-    print(dijsktra_slowish(TO))
-    '''
->>>>>>> 6d8dd6c41a58bfd31f7be39e7c671c6bad68719b
