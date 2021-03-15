@@ -49,14 +49,28 @@ a.insert(15)
 
 # Problem 1
 # Draw (manually) the binary tree rooted in a.
-
-
-
+#
+#          |4|        
+#    |2|        |5|
+#       |3|         |10| 
+#                        |15|
+#
 
 # Problem 2
 # Write code to find the height of a Binary Search Tree
+def find_height(node):
+    if node == None:
+        return 0
+    else:
+        left_H = find_height(node.left)
+        right_H = find_height(node.right)
 
+        if (left_H > right_H):
+            return left_H + 1
+        else:
+            return right_H + 1
 
+print(find_height(a)) # did return 4 (correct)
 
 # Problem 3
 
@@ -66,7 +80,8 @@ a.insert(15)
 # (Modify the BFS function from lecture for this problem)
 
 def BFS_tree(node):
-    pass
+    
+   
 # The BF traversal of a tree prints nodes level-by-level
 
 # Problem 4
