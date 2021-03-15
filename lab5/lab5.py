@@ -125,12 +125,17 @@ if __name__ == '__main__':
     connect(TO, CDMX, 7)
     connect(NYC, DC, 2)
     connect(SF, DC, 5)
-
-    #L = get_all_nodes(TO)
+    '''
+    L = get_all_nodes(TO)
+    print(L)
+    for i in L:
+        print(i.name)
+    '''
     #BFS(TO)
-    #DFS_rec(TO)
+    DFS_rec(TO)
+    #unvisit_all(TO)
     DFS_nonrec(TO)
-    unvisit_all(TO)
+    
     #DFS(TO)
     #print(dijsktra_slowish(TO))
 
