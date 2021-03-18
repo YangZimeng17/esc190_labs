@@ -80,8 +80,21 @@ print(find_height(a)) # did return 4 (correct)
 # (Modify the BFS function from lecture for this problem)
 
 def BFS_tree(node):
-    
-   
+    height = find_height(node)
+    for i in range(1, height + 1):
+        print_level(node, i)
+
+def print_level(node, level):
+    if node == None:
+        return
+    if level == 1:
+        print(node.value)
+    elif level > 1:
+        print_level(node.left, level - 1)
+        print_level(node.right, level - 1)
+
+BFS_tree(a)
+
 # The BF traversal of a tree prints nodes level-by-level
 
 # Problem 4
