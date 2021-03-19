@@ -149,12 +149,18 @@ def make_data(max_nodes):
     h=[]  # a list of heights
     n.append(n_nodes)
     h.append(height_random_tree(n_nodes))
+    while n_nodes < max_nodes:
+        n.append(n_nodes * 1.2)
+        for j in range (0,40):
+            h.append(height_random_tree(n_nodes))
+
+    '''
     for i in range(1,N_TREES):
         n_nodes*=1.2
         n_nodes=int(n_nodes)
         n.append(n_nodes)
         h.append(height_random_tree(n_nodes))
-
+    '''
     return n, h
 
 n, h = make_data(10000)
