@@ -103,14 +103,36 @@ BFS_tree(a)
 # tree and the height of the tree when inserting nodes with values generated
 # using random.random()
 
+import random
+
 
 def make_random_tree(n_nodes):
     '''Make a tree with n_nodes nodes by inserting nodes with values
     drawn using random.random()
     '''
+    t=BST(random.random())
+    for i in range(n_nodes-1):
+        t.insert(random.random())
+        
+    return t
+
+'''        
+t1=make_random_tree(5)
+BFS_tree(t1)
+'''
+
 
 def height_random_tree(n_nodes):
     '''Generate a random tree with n_nodes nodes, and return its height'''
+    tr=make_random_tree(n_nodes)
+    #BFS_tree(tr)
+    return BST_height(tr, h=0)
+
+'''
+h1=height_random_tree(9)
+print(h1)
+'''
+
 
 def make_data(max_nodes):
     '''Make two lists representing the empirical relationship between
@@ -123,8 +145,25 @@ def make_data(max_nodes):
     '''
     N_TREES = 40
     n_nodes = 5
+    n=[]  # a list of values of n_nodes
+    h=[]  # a list of heights
+    n.append(n_nodes)
+    h.append(height_random_tree(n_nodes))
+    for i in range(1,N_TREES):
+        n_nodes*=1.2
+        n_nodes=int(n_nodes)
+        n.append(n_nodes)
+        h.append(height_random_tree(n_nodes))
 
     return n, h
+
+n, h = make_data(10000)
+print(n)
+print(h)
+'''
+for i in range(len(n)):
+    print(str(n[i]) +"     "+ str(h[i]))
+'''
 
 n, h = make_data(10000)
 import matplotlib.pyplot as plt
