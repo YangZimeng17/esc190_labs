@@ -126,7 +126,7 @@ def height_random_tree(n_nodes):
     '''Generate a random tree with n_nodes nodes, and return its height'''
     tr=make_random_tree(n_nodes)
     #BFS_tree(tr)
-    return BST_height(tr, h=0)
+    return find_height(tr)
 
 '''
 h1=height_random_tree(9)
