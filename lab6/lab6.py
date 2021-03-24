@@ -176,3 +176,4 @@ import matplotlib.pyplot as plt
 plt.scatter(n, h)
 plt.show()
 # plt.savefig("trees.png") can save the data to disk
+
