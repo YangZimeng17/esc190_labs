@@ -11,7 +11,7 @@ def write_image(image, filename):
     img_raster = []
     for i in range(height):
         for j in range(width):
-            img_raster.extend(image.getpixel((j, i)))
+            img_raster.extend(image.getpixel((j, i))[:3])
 
     f.write(bytearray(img_raster))
     f.close()
@@ -36,11 +36,13 @@ def read_image(filename):
     return image
 
 #Write a png image to bin
+image = Image.open("UofTPresidentMericGertler-smaller.jpg")
+'''
 image = Image.open("6x5.png")
 write_image(image, "6x5.bin")
 image = Image.open("3x4.png")
 write_image(image, "3x4.bin")
-
+'''
 
 
 #Read image from a bin file, save it to png

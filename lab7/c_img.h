@@ -19,5 +19,9 @@ void set_pixel(struct rgb_img *im, int y, int x, int r, int g, int b);
 void destroy_image(struct rgb_img *im);
 void print_grad(struct rgb_img *grad);
 
+/* read in the photo saved in struct rgb_img *fim, turn it brighter or darker per facotr in scale[5],
+and save the modified version to files named resname[]*/
+void modify_img(struct rgb_img *fim, char *resname[], double scale[]);
+
 
 #endif
