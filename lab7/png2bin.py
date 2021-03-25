@@ -41,6 +41,8 @@ write_image(image, "6x5.bin")
 image = Image.open("3x4.png")
 write_image(image, "3x4.bin")
 
+
+
 #Read image from a bin file, save it to png
 im2 = read_image("a.bin")
 im3 = read_image("6x5_grad.bin")
