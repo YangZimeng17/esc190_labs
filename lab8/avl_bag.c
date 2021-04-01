@@ -346,7 +346,15 @@ To test your function from (1), you need to create AVL trees (easy) as well as B
 bool bag_insert_norot(bag_t *bag, bag_elem_t elem);
 
 // Q3 Rewrite avl_remove from scratch.
-void my_avl_destroy(avl_node_t *root);
+void my_avl_destroy(avl_node_t *root)
+{
+    if (root != NULL){
+        my_avl_destroy(root->left);
+        my_avl_destroy(root->right);
+        free(root);
+    }
+ 
+}
 
 
 
