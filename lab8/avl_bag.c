@@ -367,7 +367,62 @@ To test your function from (1), you need to create AVL trees (easy) as well as B
    Show your TA that your is_avl_tree function returns true for AVL trees and returns false
    for non-AVL trees.
 */
-bool bag_insert_norot(bag_t *bag, bag_elem_t elem);
+bool avl_insert_norot(avl_node_t **root, bag_elem_t elem,
+                int (*cmp)(bag_elem_t, bag_elem_t))
+{
+    bool inserted;
+
+    if (! *root) {
+        inserted = (*root = avl_node_create(elem)); //if the tree is empty, we create a tree that has 
+                                                    //the inserted node as its root
+    } else if ((*cmp)(elem, (*root)->elem) < 0) {
+        if ((inserted = avl_insert(&(*root)->left, elem, cmp))) {
+            /* Check if the subtree needs rebalancing; update its height. */
+            /*
+            if (HEIGHT((*root)->left) > HEIGHT((*root)->right) + 1)
+                avl_rebalance_to_the_right(root);
+            else
+                avl_update_height(*root);
+            */
+            avl_update_height(*root);
+        }
+    } else if ((*cmp)(elem, (*root)->elem) > 0) {
+        if ((inserted = avl_insert(&(*root)->right, elem, cmp))) {
+            /* Check if the subtree needs rebalancing; update its height. */
+            /*
+            if (HEIGHT((*root)->right) > HEIGHT((*root)->left) + 1)
+                avl_rebalance_to_the_left(root);
+            else
+                avl_update_height(*root);
+            */
+           avl_update_height(*root);
+        }
+    } else { /* ((*cmp)(elem, (*root)->elem) == 0) */
+        /* Insert into the subtree with smaller height. */
+        /*
+        if (HEIGHT((*root)->left) < HEIGHT((*root)->right))
+            inserted = avl_insert(&(*root)->left, elem, cmp);
+        else
+            inserted = avl_insert(&(*root)->right, elem, cmp);
+        */
+        inserted = avl_insert(&(*root)->right, elem, cmp);
+        /* No rebalancing necessary, but update height. */
+        if (inserted)  avl_update_height(*root);
+    }
+
+    return inserted;
+}
+
+bool bag_insert_norot(bag_t *bag, bag_elem_t elem)
+{
+    if (avl_insert_norot(&bag->root, elem, bag->cmp)) {
+        bag->size++;
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 // Q3 Rewrite avl_remove from scratch.
 void my_avl_destroy(avl_node_t *root)
