@@ -67,10 +67,12 @@ int main(void)
 {
     size_t i;
     float elts[] = {3.2, 3.1, 3, 10, 11, 4, 1, 0, 0.2, 5, 0.4, 2};
+    float felts[] = {3.2, 3.1, 3, 4, 1, 0, 0.2};
     float bad_elts[] = {56, 0.001, 0.2000001, 75, 50, -1, 0.1};
 
     /* Create a new bag. */
     bag_t *b1 = bag_create(float_cmp);
+    bag_t *b2 = bag_create(float_cmp);
 
     /* Try to remove something from an empty bag. */
     assert(! bag_remove(b1, &elts[0]));
@@ -92,7 +94,38 @@ int main(void)
         bag_print(b1, 8, float_print);
         assert(bag_contains(b1, &elts[i]));
         assert(bag_size(b1) == i + 1);
+        /* check if the tree is an AVL tree */
+        if (is_avl_tree(b1))
+            printf("b1==============This is an AVL tree!\n");
+        else
+            printf("b1==============This is NOT an AVL tree!\n");
     }
+
+    
+
+    /* create a non AVL tree */
+    for (i = 0; i < sizeof(felts) / sizeof(felts[0]); ++i) {
+        assert(bag_insert_norot(b2, &felts[i]));
+        printf("After inserting %g: size = %lu\nelems:", felts[i], bag_size(b2));
+        bag_traverse(b2, float_print);
+        printf("\nAs a tree:\n");
+        bag_print(b2, 8, float_print);
+        assert(bag_contains(b2, &felts[i]));
+        assert(bag_size(b2) == i + 1);
+        /* check if the tree is an AVL tree */
+        if (is_avl_tree(b2))
+            printf("b2==============This is an AVL tree!\n");
+        else
+            printf("b2==============This is NOT an AVL tree!\n");
+    }
+
+    
+
+
+
+
+
+
 
     /* See if anything got lost. */
     printf("Lost any element?  ");

@@ -329,7 +329,32 @@ bool bag_remove(bag_t *bag, bag_elem_t elem)
 //In avl_bag.c, implement the function
 // bool is_avl_tree(bag_t *bag)
 // The function takes in a pointer to a BST, and returns True if the BST is an AVL tree.
-bool is_avl_tree(bag_t *bag)
+bool is_avl_node(avl_node_t *node){
+    int d,h_left, h_right;
+
+    if (node){
+        h_left=HEIGHT(node->left);
+        h_right=HEIGHT(node->right);
+        d = h_left-h_right;
+        if ((d<=1)&&(d>=-1)){
+            if (is_avl_node(node->left) && is_avl_node(node->right))
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
+    }
+    return true;
+}
+
+bool is_avl_tree(bag_t *bag){
+
+    return is_avl_node(bag->root);
+
+}
+
+/*bool is_avl_tree(bag_t *bag)
 {
     if (bag->root == NULL){
         return true;
@@ -344,8 +369,9 @@ bool is_avl_tree(bag_t *bag)
 
     return false;
 
-}
+}*/
 
+/*
 int avl_height(bag_t *bag){
     if (bag->root == NULL){
         return 0;
@@ -353,7 +379,7 @@ int avl_height(bag_t *bag){
     int max = (avl_height(bag->root->left) >= avl_height(bag->root->right)) ? avl_height(bag->root->left): avl_height(bag->root->right);
 
     return 1 + max;
-}
+}*/
 
 /* Q2 for lab 8
 To test your function from (1), you need to create AVL trees (easy) as well as BSTs
