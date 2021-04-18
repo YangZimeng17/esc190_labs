@@ -49,12 +49,14 @@ a.insert(15)
 
 # Problem 1
 # Draw (manually) the binary tree rooted in a.
-#
-#          |4|        
-#    |2|        |5|
-#       |3|         |10| 
-#                        |15|
-#
+
+#       4
+#     /   \
+#   2       5
+#    \      \
+#     3      10
+#             \
+#              15
 
 # Problem 2
 # Write code to find the height of a Binary Search Tree
@@ -70,7 +72,16 @@ def find_height(node):
         else:
             return right_H + 1
 
-print(find_height(a)) # did return 4 (correct)
+print(find_height(a)) # return 4 (incorrect, it should return 3)
+
+# correct ver:
+def height(node):
+    if node == None:
+        return -1
+    if node.left == None and node.right == None:
+        return 0
+    return 1 + max(height(node.left), height(node.right))
+
 
 # Problem 3
 
